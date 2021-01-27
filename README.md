@@ -74,6 +74,14 @@
 
 **Note** You can add extra properties to the todo objects in the JSON that you want to be persistent.
 
+    √ The todo list should be empty first (1264 ms)
+    √ Can add todo task with text and priority (5022 ms)
+    √ After add task the input should be empty (4509 ms)
+    × Task should be added in the end of the list (10006 ms)
+    × Counter increase (10013 ms)
+    × Can sort by priority (1270 ms)
+    √ If data structure is correct in localStorage (54 ms)
+    × Fetches GET JSONBIN.io (10007 ms)
 ## Bonus
 
 - jsonbin.io - see explanation above

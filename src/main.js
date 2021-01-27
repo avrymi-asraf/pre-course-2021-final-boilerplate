@@ -45,9 +45,9 @@ function elemTaskToList(todo) {
   const todoNameDom = document.createElement("div");
   todoNameDom.classList.add("todo-text", "task-properties");
 
-  containerDom.appendChild(priorityDom);
-  containerDom.appendChild(createdAtDom);
   containerDom.appendChild(todoNameDom);
+  containerDom.appendChild(createdAtDom);
+  containerDom.appendChild(priorityDom);
   //fil data
   priorityDom.textContent = todo.priority;
   createdAtDom.textContent = todo.createdAt;
