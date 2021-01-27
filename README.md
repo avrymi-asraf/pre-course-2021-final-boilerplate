@@ -22,9 +22,9 @@
 - After the user clicks on the 'add' button, the todo input field should be "reset"V
 - Every todo item should have a "container" div with class `todo-container` that will contain 3 sub-elements:
 
-  - An element with a class `todo-text` with the text of the todo task
-  - An element with a class `todo-created-at` that will hold the creation time of the task in a [SQL format](https://www.w3schools.com/sql/sql_dates.asp#:~:text=SQL%20Date%20Data%20Types&text=DATE%20%2D%20format%20YYYY%2DMM%2D,YEAR%20%2D%20format%20YYYY%20or%20YY)
-  - An element for showing the numeric priority value of the task, with a class `todo-priority`
+  - An element with a class `todo-text` with the text of the todo taskV
+  - An element with a class `todo-created-at` that will hold the creation time of the task in a [SQL format](https://www.w3schools.com/sql/sql_dates.asp#:~:text=SQL%20Date%20Data%20Types&text=DATE%20%2D%20format%20YYYY%2DMM%2D,YEAR%20%2D%20format%20YYYY%20or%20YY)V
+  - An element for showing the numeric priority value of the task, with a class `todo-priority`V
 
   Good way 👍🏿:
 
