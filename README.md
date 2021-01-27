@@ -13,11 +13,11 @@
 
 ## Guidelines
 
-- The Todo list should have two sections: _Control_ section and _View_ section
+- The Todo list should have two sections: _Control_ section and _View_ section V
 - The _Control_ section is where the user adds his todo task and priority, and should have three elements:
-  - [\<input\>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) with id `text-input`.
-  - [\<select\>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) with id `priority-selector` (options will be: 1-5).
-  - [\<button\>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) with id `add-button`.
+  - [\<input\>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) with id `text-input`.V
+  - [\<select\>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) with id `priority-selector` (options will be: 1-5).V
+  - [\<button\>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) with id `add-button`.V
 - The _View_ section is where we display the list of added todo tasks and data. The list should start empty and each added todo should be inserted to the end of the list.
 - After the user clicks on the 'add' button, the todo input field should be "reset"
 - Every todo item should have a "container" div with class `todo-container` that will contain 3 sub-elements:
