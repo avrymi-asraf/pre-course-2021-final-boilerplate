@@ -28,7 +28,7 @@ function inputTaskToElem() {
   elemTaskToList(taskFromInput);
   elemTasks.push(taskFromInput);
     inputNewTask.value = '';
-    prioritySelector.value = "1";
+    // prioritySelector.value = "1";
   listTasksToPage();
 }
 //
@@ -61,7 +61,10 @@ function listTasksToPage() {
   viewTasksPage.innerHTML = "";
   for (task of listViewTasks) {
     viewTasksPage.appendChild(task);
-  }
+    }
+    //update counter
+    const counter = document.querySelector("#counter");
+    counter.textContent = listViewTasks.length;
 }
 //
 //
@@ -74,3 +77,5 @@ function dateNowSql() {
   time = time.replace("T", " ");
   return time;
 }
+
+
