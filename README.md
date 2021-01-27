@@ -18,8 +18,8 @@
   - [\<input\>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) with id `text-input`.V
   - [\<select\>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) with id `priority-selector` (options will be: 1-5).V
   - [\<button\>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) with id `add-button`.V
-- The _View_ section is where we display the list of added todo tasks and data. The list should start empty and each added todo should be inserted to the end of the list.
-- After the user clicks on the 'add' button, the todo input field should be "reset"
+- The _View_ section is where we display the list of added todo tasks and data. The list should start empty and each added todo should be inserted to the end of the list.V
+- After the user clicks on the 'add' button, the todo input field should be "reset"V
 - Every todo item should have a "container" div with class `todo-container` that will contain 3 sub-elements:
 
   - An element with a class `todo-text` with the text of the todo task
