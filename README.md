@@ -1,35 +1,15 @@
-# ![Scale-Up Velocity](./readme-files/logo-main.png) Pre Course Project - Todo List 📋
+#  Pre Course Project - Todo List 📋
+## workflow
+- pass all testes
+- connect to jsonbin.io
+- design css(fonts, location, )
+- delete and edit tasks
+- mark finish tasks
 
-This project will include most of the topics we have learnt so far.
-This repository includes a basic skeleton template with automated tests, use it for your submissions.
 
-In this project you will create a Todo List Web Application, in which the user can store prioritized _todo tasks_ and view/sort that list.
 
-Here is a preview sample of the desired functionality (without styling):
 
-![Add todo task](./readme-files/basic-todo.gif)
 
-## Instructions
-
-- Fork this repository into your account. Make sure to select the **public** option ⑂
-- Clone your new repository to your computer 🖥
-- Install the project dependencies by running `npm install` from the vscode terminal `ctrl + j` (make sure you are in the correct directory) 📂
-<!-- - [Create new branch](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/managing-branches) -->
-- Make changes to the code to meet the project requirements 📝
-- [Commit Early, Push Often](https://www.worklytics.co/commit-early-push-often/) - your work will be evaluated by your push history 📖
-- Good Luck! 🤘
-
-## Running tests
-
-We have created automated tests for your convenience, use it to check your progression.
-
-Note that the automated tests rely on your code having the exact class names, Ids and objects structures as specified below.
-
-To run the tests locally simply run `npm run test` in the terminal
-
-Note that each commit to `main` branch will trigger a github [action](https://docs.github.com/en/actions). You can easily see the action tests result on each commit:
-
-![Commits test](./readme-files/commit-tests.png)
 
 ## Guidelines
 
@@ -107,24 +87,4 @@ Note that each commit to `main` branch will trigger a github [action](https://do
   - Something awesome we didn't think of...
 - For added value, you can add jest/puppeteer test to test any bonus feature you implemented
 
-**Add an explanation in `README.md` for each bonus feature you add and a link to any resoure you used**
 
-## Grading policy
-
-- Your project will be graded by the number of automatic tests you pass
-- Using jsonbin.io
-- Extra freestyle features - Please add an explanation about the bonus features you added to the readme.md
-- new jest/puppeteer test
-- Code quality and style: indentation, Meaningful and non-disambiguate variable names, Comments documentation
-- Visual creativity, use css to make this app look awesome 💅🏿
-- Division to reusable functions, no code duplication
-- Git usage: meaningful commit messages, small commits, folder and file structures
-
-## Submitting
-
-- Change this file (README.md) and style it to showcase your solution (gifs, explanations, link to the github page, links to resources you used, etc...)
-- Submit your solution repo to the ChallengeMe system
-- Submit your repo link and github page and video to Google Classroom
-- Record a 5-10 min selfie video, describe yourself in a few words (age, location, military background, technological background). Also, talk about the solution you submitted (try to explain how your app works in general and which bonuses you added). Think about this video as an interview.
-
-GOOD LUCK!
