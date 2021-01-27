@@ -14,10 +14,10 @@ let elemTasks = [];
 //--------------------------------------function
 //
 class todo {
-  constructor(taskName, priority, createdAt, tags = []) {
-    this.taskName = taskName;
+  constructor(text, priority, date, tags = []) {
+    this.text = text;
     this.priority = priority;
-    this.createdAt = createdAt;
+    this.date = date;
     this.tags = tags;
   }
 }
@@ -54,8 +54,8 @@ function elemTaskToList(todo) {
   containerDom.appendChild(priorityDom);
   //fil data
   priorityDom.textContent = todo.priority;
-  createdAtDom.textContent = todo.createdAt;
-  todoNameDom.textContent = todo.taskName;
+  createdAtDom.textContent = todo.date;
+  todoNameDom.textContent = todo.text;
   //to li
   listViewTasks.push(containerDom);
 }
@@ -100,13 +100,14 @@ function sortTasks(key = "priority", reverse = false) {
     isMixed = false;
     for (let index = 0; index < listViewTasks.length - 1; index++) {
       let content_a = listViewTasks[index].childNodes[childIndex].textContent;
-      let content_b = listViewTasks[index + 1].childNodes[childIndex].textContent;
+      let content_b =
+        listViewTasks[index + 1].childNodes[childIndex].textContent;
       //if content is number, convert to number
       if (Number(content_a) && Number(content_b)) {
         [content_a, content_b] = [Number(content_a), Number(content_b)];
-        }
-        //if is mixed
-      if (reverse!==(content_a < content_b)) {
+      }
+      //if is mixed
+      if (reverse !== content_a < content_b) {
         [listViewTasks[index], listViewTasks[index + 1]] = [
           listViewTasks[index + 1],
           listViewTasks[index],
@@ -116,4 +117,13 @@ function sortTasks(key = "priority", reverse = false) {
     }
   }
   listTasksToPage();
+}
+let a
+function elemTasksToJson() {
+  let a = JSON.stringify(elemTasks, function replacer(date, value) {
+    if (date === "date") {
+      return value.replace("-", "").Number();
+    }
+  });
+   
 }
