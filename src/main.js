@@ -2,8 +2,12 @@
 const inputNewTask = document.querySelector("#text-input");
 const viewTasksPage = document.querySelector(".view-tasks");
 const addButton = document.querySelector("#add-button");
+const sortButton = document.querySelector("#sort-button");
 const prioritySelector = document.querySelector("#priority-selector");
+//
 addButton.addEventListener("click", inputTaskToElem);
+sortButton.addEventListener("click", sortTasks);
+//
 let listViewTasks = [];
 let elemTasks = [];
 //
@@ -27,8 +31,8 @@ function inputTaskToElem() {
   const taskFromInput = new todo(taskName, priority, createdAt);
   elemTaskToList(taskFromInput);
   elemTasks.push(taskFromInput);
-    inputNewTask.value = '';
-    // prioritySelector.value = "1";
+  inputNewTask.value = "";
+  // prioritySelector.value = "1";
   listTasksToPage();
 }
 //
@@ -61,10 +65,11 @@ function listTasksToPage() {
   viewTasksPage.innerHTML = "";
   for (task of listViewTasks) {
     viewTasksPage.appendChild(task);
-    }
-    //update counter
-    const counter = document.querySelector("#counter");
-    counter.textContent = listViewTasks.length;
+  }
+  //update counter
+  const counter = document.querySelector("#counter");
+  counter.textContent = listViewTasks.length;
+  console.log(listViewTasks);
 }
 //
 //
@@ -77,5 +82,38 @@ function dateNowSql() {
   time = time.replace("T", " ");
   return time;
 }
+//
+//
+function sortTasks(key = "priority", reverse = false) {
+  console.log("sort by function");
+  //determine sort by?
+  let childIndex = 2;
 
+  switch (key) {
+    case "priority":
+      childIndex = 2;
+      break;
+  }
 
+  let isMixed = true;
+  while (isMixed) {
+    isMixed = false;
+    for (let index = 0; index < listViewTasks.length - 1; index++) {
+      let content_a = listViewTasks[index].childNodes[childIndex].textContent;
+      let content_b = listViewTasks[index + 1].childNodes[childIndex].textContent;
+      //if content is number, convert to number
+      if (Number(content_a) && Number(content_b)) {
+        [content_a, content_b] = [Number(content_a), Number(content_b)];
+        }
+        //if is mixed
+      if (reverse!==(content_a < content_b)) {
+        [listViewTasks[index], listViewTasks[index + 1]] = [
+          listViewTasks[index + 1],
+          listViewTasks[index],
+        ];
+        isMixed = true;
+      }
+    }
+  }
+  listTasksToPage();
+}

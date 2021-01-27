@@ -58,7 +58,7 @@
     </div>
   ```
 
-- Add a counter element to reflect the **current** number of todos stored in the app. This element should have an id of `counter`.
+- Add a counter element to reflect the **current** number of todos stored in the app. This element should have an id of `counter`.V
 
 - Add a button with id `sort-button`. Clicking this element should resort the todo list by their todos priority (DESC)
 
