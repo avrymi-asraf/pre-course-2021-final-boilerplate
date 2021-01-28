@@ -1,4 +1,7 @@
 //-----------------------------------------------------variables
+const urlLast = "https://api.jsonbin.io/v3/b/6012913588655a7f320e6d54/latest";
+const url = "https://api.jsonbin.io/v3/b/6012913588655a7f320e6d54";
+//
 const inputNewTask = document.querySelector("#text-input");
 const viewTasksPage = document.querySelector(".view-tasks");
 const addButton = document.querySelector("#add-button");
@@ -126,5 +129,32 @@ function elemTasksToJson() {
       return value.replace("-", "").Number();
     }
   });
-   
+}
+//
+//
+async function getJsonBin(insert = true) {
+  let response = await fetch(urlLast, { method: "GET" });
+  let JsonData = await response.json();
+  let clainData = await JsonData.record;
+  // return await JSON.parse(JsonData);
+  // a = await JSON.parse(clainData);
+  if (insert) insertJsonBin(await clainData);
+}
+//
+//
+async function putJsonBin(data) {
+  await fetch(url, {
+    method: "put",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+}
+//
+//
+function insertJsonBin(data) {
+  for (let task of data) {
+    elemTaskToList(task);
+    elemTasks.push(task);
+    listTasksToPage();
+  }
 }

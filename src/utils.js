@@ -7,9 +7,10 @@ const url = "https://api.jsonbin.io/v3/b/6012913588655a7f320e6d54/latest";
 
 async function getJsonBin() {
   let response = await fetch(urlLast, { method: "GET" });
-  let commits = await response.json(); // read response body and parse as JSON
-  let output = await commits.record;
-  return await JSON.parse(output);
+  let JsonData = await response.json(); 
+  let clainData = await JsonData.record;
+  return await JSON.parse(JsonData);
+  // return await JSON.parse(clainData);
 }
 
 async function putJsonBin(data) {
@@ -22,7 +23,7 @@ async function putJsonBin(data) {
 
 // Gets data from persistent storage by the given key and returns it
 async function getPersistent(key) {
-  console.log(getJsonBin());
+  
   return [];
 }
 

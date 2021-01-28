@@ -73,7 +73,7 @@ describe(projectName, () => {
 
     await full4s.beforeAll();
   });
-
+ 
   afterEach(async () => {
     await full4s.afterEach(page);
   });
