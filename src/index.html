@@ -11,34 +11,36 @@
   <body>
     <section class="control-section">
       <h1 id="title-page">ToDo list</h1>
-      <fieldset class="control-view">
-      <legend id="title">Add task</legend>
-      <div class="add-tasks">
-        <input type="text" id="text-input" />
-        <select id="priority-selector">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <button id="add-button">add task</button>
-        <button id="sort-button">sort</button>
-      </div></fieldset>
-      <fieldset class="counter-title">
-        You have <span id="counter">0 </span>tasks todo
-      </div>
+      <fieldset class="control-field">
+        <legend id="title">Add task</legend>
+        <div class="add-tasks">
+          <input type="text" id="text-input" />
+          <select id="priority-selector">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <button id="add-button">add task</button>
+          <button id="sort-button">sort</button>
+        </div>
+      </fieldset>
     </section>
     <section class="view-section">
-      <div class="view-tasks"></div>
+      <fieldset class="view-field">
+        <legend class="counter-title">
+          You have <span id="counter">0 </span>tasks todo
+        </legend>
+        <div class="view-tasks"></div>
+      </fieldset>
     </section>
   </body>
   <script src="./main.js"></script>
 </html>
 
-
-<fieldset class="todo-container">
+<!-- <fieldset class="todo-container">
   <legend class="todo-text task-properties">aaa</legend>
   <div class="todo-created-at task-properties">2021-01-28 20:42:46</div>
   <div class="todo-priority task-properties">5</div>
-</fieldset>
+</fieldset> -->
