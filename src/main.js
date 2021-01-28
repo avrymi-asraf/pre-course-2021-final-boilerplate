@@ -37,6 +37,16 @@ function inputTaskToElem() {
   inputNewTask.value = "";
   // prioritySelector.value = "1";
   listTasksToPage();
+  putJsonBin(elemTasks);
+}
+//
+//
+async function putJsonBin(data) {
+  await fetch(url, {
+    method: "put",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
 }
 //
 //
@@ -61,6 +71,7 @@ function elemTaskToList(todo) {
   todoNameDom.textContent = todo.text;
   //to li
   listViewTasks.push(containerDom);
+  // listTasksToPage();
 }
 //
 //
@@ -72,7 +83,7 @@ function listTasksToPage() {
   //update counter
   const counter = document.querySelector("#counter");
   counter.textContent = listViewTasks.length;
-  console.log(listViewTasks);
+  // console.log(listViewTasks);
 }
 //
 //
@@ -136,25 +147,19 @@ async function getJsonBin(insert = true) {
   let response = await fetch(urlLast, { method: "GET" });
   let JsonData = await response.json();
   let clainData = await JsonData.record;
-  // return await JSON.parse(JsonData);
-  // a = await JSON.parse(clainData);
   if (insert) insertJsonBin(await clainData);
 }
 //
 //
-async function putJsonBin(data) {
-  await fetch(url, {
-    method: "put",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-}
-//
-//
 function insertJsonBin(data) {
+  elemTasks = [];
+  listViewTasks = []
   for (let task of data) {
     elemTaskToList(task);
     elemTasks.push(task);
     listTasksToPage();
   }
 }
+//
+//
+window.onload = getJsonBin();
