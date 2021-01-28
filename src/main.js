@@ -45,8 +45,9 @@ async function putJsonBin(data) {
   await fetch(url, {
     method: "put",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
+    body: JSON.stringify({"my-todo":data}),
   });
+  console.log(JSON.stringify(data));
 }
 //
 //
@@ -146,7 +147,7 @@ function elemTasksToJson() {
 async function getJsonBin(insert = true) {
   let response = await fetch(urlLast, { method: "GET" });
   let JsonData = await response.json();
-  let clainData = await JsonData.record;
+  let clainData = await JsonData.record["my-todo"];
   if (insert) insertJsonBin(await clainData);
 }
 //
