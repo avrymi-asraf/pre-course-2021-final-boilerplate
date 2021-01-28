@@ -118,7 +118,8 @@ function sortTasks(key = "priority", reverse = false) {
   }
   listTasksToPage();
 }
-let a
+//
+//
 function elemTasksToJson() {
   let a = JSON.stringify(elemTasks, function replacer(date, value) {
     if (date === "date") {
