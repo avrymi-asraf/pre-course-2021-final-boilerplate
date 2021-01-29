@@ -72,7 +72,7 @@ function elemTaskToList(todo) {
   priorityDom.textContent = todo.priority;
   createdAtDom.textContent = todo.date;
   todoNameDom.textContent = todo.text;
-  deleteButtonDom.textContent = "Ⓧ";
+  deleteButtonDom.textContent = "Delete"
   deleteButtonDom.onclick = () => {
     viewTasksPage.removeChild(containerDom);
     const viewRemoveIndex = listViewTasks.indexOf(containerDom);

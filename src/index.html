@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My TODO List</title>
+    <title>TODO List</title>
     <!-- <script src="utils.js"></script> -->
 
     <link rel="stylesheet" href="style.css" />
@@ -12,9 +12,14 @@
     <section class="control-section">
       <h1 id="title-page">ToDo list</h1>
       <fieldset class="control-field">
-        <legend id="title">Add task</legend>
+        <legend id="title-add-task" class="legend">Add task</legend>
         <div class="add-tasks">
-          <input type="text" id="text-input" class="flex-effect" placeholder="Add task" />
+          <input
+            type="text"
+            id="text-input"
+            class="flex-effect"
+            placeholder="Task name"
+          />
           <select id="priority-selector" class="flex-effect">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -22,17 +27,26 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
-          <button id="add-button" class="flex-effect">add task</button>
-          <button id="sort-button" class="flex-effect">sort</button>
+          <button id="add-button" class="flex-effect">Add task</button>
+          <button id="sort-button" class="flex-effect">Sort</button>
         </div>
       </fieldset>
     </section>
     <section class="view-section">
       <fieldset class="view-field">
-        <legend class="counter-title">
-          You have <span id="counter">0 </span>tasks todo
+        <legend class="counter-title legend">
+          You have <span id="counter">0 </span> tasks
         </legend>
-        <div class="view-tasks"></div>
+        <div class="view-tasks">
+          <div class="todo-container">
+            <div class="todo-text task-properties">aaaa</div>
+            <div class="todo-created-at task-properties">
+              2021-01-29 21:15:11
+            </div>
+            <div class="todo-priority task-properties">1</div>
+            <button class="delete-btn task-properties">Delete</button>
+          </div>
+        </div>
       </fieldset>
     </section>
   </body>
