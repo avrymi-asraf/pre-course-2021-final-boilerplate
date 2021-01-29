@@ -1,7 +1,7 @@
 #  Pre Course Project - Todo List 📋
 ## workflow
-- pass all testes
-- connect to jsonbin.io
+- pass all testes V
+- connect to jsonbin.io V
 - design css(fonts, location, )
 - delete and edit tasks
 - mark finish tasks
