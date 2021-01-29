@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Cabin:wght@500&family=Carter+One&family=Montserrat:wght@400;600&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap");
 /* font-family: 'Cabin', sans-serif; slim
 font-family: 'Carter One', cursive; titles
 font-family: 'Montserrat', sans-serif; slim 
@@ -14,7 +14,7 @@ font-family: 'Quicksand', sans-serif;slim*/
 
 body {
   background: #ede7e3;
-   font-family: 'Cabin', sans-serif; 
+  font-family: "Cabin", sans-serif;
 }
 
 section {
@@ -23,8 +23,8 @@ section {
   align-items: center;
 }
 #title-page {
-  font-family: 'Carter One', cursive; 
-  font-size:6vh;
+  font-family: "Carter One", cursive;
+  font-size: 6vh;
 }
 .control-field,
 .view-field {
@@ -39,7 +39,7 @@ section {
   background: white;
   border-radius: 5px;
   padding: 0;
-  margin:1.5vh;
+  margin: 1.5vh;
 }
 @media only screen and (max-width: 800px) {
   .control-field,
@@ -48,11 +48,11 @@ section {
   }
 }
 .legend {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   word-spacing: 0.2em;
-  font-size:1.5em;
+  font-size: 1.5em;
 }
-#counter{
+#counter {
   font-style: inherit;
   font-weight: bold;
 }
@@ -71,13 +71,13 @@ section {
   border: 0 solid var(--blue);
   background: var(--white);
   text-align: center;
-  border-bottom: 2px solid var(--blue);
+  border-bottom: 3px solid var(--blue);
   outline: 0;
   appearance: none;
   height: 4vh;
   align-self: end;
   padding: 0;
-  color: var(--blue)
+  color: var(--blue);
 }
 
 .flex-effect:hover,
@@ -85,11 +85,11 @@ section {
 #priority-selector:hover {
   flex-grow: 4;
   font-size: 1rem;
-  border-bottom: 2px solid var(--orange);
+  border-bottom: 3px solid var(--orange);
   text-align: center;
-color: var(--blue)
+  color: var(--blue);
 }
-#text-input::placeholder{
+#text-input::placeholder {
   color: var(--blue-);
   text-align: start;
 }
@@ -108,7 +108,7 @@ color: var(--blue)
   border-radius: 5px;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-rows: 1fr 1fr;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 .todo-container:nth-of-type(even) {
   background-color: var(--blue--);
@@ -121,13 +121,12 @@ color: var(--blue)
   text-align: start;
 }
 
-
 .todo-created-at {
   grid-row: 1/2;
   grid-column: 3/4;
   overflow: visible;
-  font-size:0.7rem;
-  text-align:end;
+  font-size: 0.7rem;
+  text-align: end;
 }
 
 .todo-priority {
@@ -136,10 +135,72 @@ color: var(--blue)
   overflow: visible;
   align-self: end;
 }
-.delete-btn {
+
+.buttons-delete-check {
   grid-row: 2/3;
   grid-column: 3/4;
-  align-self: end;
-  border-radius:3px;
-  border: 1px solid #111;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  /* border: 2px solid gray; */
+  border-radius: 5px;
+  font-size: 12px;
+}
+.task-btn {
+  flex-grow: 1;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.5s;
+  border: none;
+  text-align: center;
+  padding: 0;
+  color: var(--blue);
+}
+
+.delete-btn .tag::after {
+  position: relative;
+  content: "🗑";
+  transition: all 0.5s;
+}
+.check-btn .tag::after {
+  position: relative;
+  content: "👌";
+  transition: all 0.5s;
+}
+.delete-btn:hover {
+  color: red;
+  flex-grow: 4;
+}
+.check-btn:hover {
+  color: green;
+  flex-grow: 4;
+}
+.task-btn:hover .tag {
+  display: none;
+}
+.check-btn:hover::before {
+  content: "check";
+  font-weight: bold;
+  text-align: center;
+  transition: color, flex-grow 0.5s;
+}
+
+.delete-btn:hover:before {
+  content: "delete";
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+.delete-btn:hover:after .buttons-delete-check {
+  background-color: var(--blue-);
+  color: white;
+}
+.check-btn:hover::after .buttons-delete-check {
+  background-color: var(--orange);
+  color: white;
+}
+
+@media only screen and (max-width: 800px) {
+  
 }
