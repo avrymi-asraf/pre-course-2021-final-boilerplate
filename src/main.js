@@ -45,9 +45,8 @@ async function putJsonBin(data) {
   await fetch(url, {
     method: "put",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({"my-todo":data}),
+    body: JSON.stringify({ "my-todo": data }),
   });
-  console.log(JSON.stringify(data));
 }
 //
 //
@@ -62,17 +61,27 @@ function elemTaskToList(todo) {
   createdAtDom.classList.add("todo-created-at", "task-properties");
   const todoNameDom = document.createElement("div");
   todoNameDom.classList.add("todo-text", "task-properties");
+  const deleteButtonDom = document.createElement("button");
+  deleteButtonDom.classList.add("delete-btn", "task-properties");
 
   containerDom.appendChild(todoNameDom);
   containerDom.appendChild(createdAtDom);
   containerDom.appendChild(priorityDom);
+  containerDom.appendChild(deleteButtonDom);
   //fil data
   priorityDom.textContent = todo.priority;
   createdAtDom.textContent = todo.date;
   todoNameDom.textContent = todo.text;
-  //to li
+  deleteButtonDom.textContent = "Ⓧ";
+  deleteButtonDom.onclick = () => {
+    viewTasksPage.removeChild(containerDom);
+    const viewRemoveIndex = listViewTasks.indexOf(containerDom);
+    const elemRemoveIndex = listViewTasks.indexOf(containerDom);
+    listViewTasks.splice(viewRemoveIndex, 1);
+    elemTasks.splice(elemRemoveIndex, 1);
+    putJsonBin(elemTasks)
+  }
   listViewTasks.push(containerDom);
-  // listTasksToPage();
 }
 //
 //
