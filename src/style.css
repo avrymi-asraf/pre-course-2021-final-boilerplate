@@ -23,9 +23,11 @@ section {
   align-items: center;
 }
 #title-page {
-  font-family: "Carter One", cursive;
+  font-family: 'Montserrat', sans-serif;
+  width: 500;
   font-size: 6vh;
 }
+/* main fields------------------------------------------------------------------------------------------------------------------ */
 .control-field,
 .view-field {
   width: 40vw;
@@ -56,6 +58,8 @@ section {
   font-style: inherit;
   font-weight: bold;
 }
+
+/* --------------------------------------------------------------------------------------add tasks */
 .add-tasks {
   width: 100%;
   display: flex;
@@ -69,7 +73,7 @@ section {
   position: relative;
   transition: font-size, border-bottom, flex-grow 0.5s;
   border: 0 solid var(--blue);
-  background: var(--white);
+  background: white;
   text-align: center;
   border-bottom: 3px solid var(--blue);
   outline: 0;
@@ -98,6 +102,9 @@ section {
   display: grid;
   grid-template-rows: 1fr 1fr;
 }
+
+
+/* ------------------------------------------------------------------------------------------------------------------ veiw tasks*/
 
 .todo-container {
   display: grid;
@@ -135,7 +142,7 @@ section {
   overflow: visible;
   align-self: end;
 }
-
+/* -----------------------------------------------------------------------------delete and done buttons */
 .buttons-delete-check {
   grid-row: 2/3;
   grid-column: 3/4;
@@ -154,6 +161,7 @@ section {
   border: none;
   text-align: center;
   padding: 0;
+  background:white;
   color: var(--blue);
 }
 
@@ -162,7 +170,7 @@ section {
   content: "🗑";
   transition: all 0.5s;
 }
-.check-btn .tag::after {
+.done-btn .tag::after {
   position: relative;
   content: "👌";
   transition: all 0.5s;
@@ -171,22 +179,22 @@ section {
   color: red;
   flex-grow: 4;
 }
-.check-btn:hover {
+.done-btn:hover {
   color: green;
   flex-grow: 4;
 }
 .task-btn:hover .tag {
   display: none;
 }
-.check-btn:hover::before {
-  content: "check";
+.done-btn:hover::before {
+  content: "Done";
   font-weight: bold;
   text-align: center;
   transition: color, flex-grow 0.5s;
 }
 
 .delete-btn:hover:before {
-  content: "delete";
+  content: "Delete";
   font-weight: bold;
   text-align: center;
   transition: all 0.5s;
@@ -196,7 +204,7 @@ section {
   background-color: var(--blue-);
   color: white;
 }
-.check-btn:hover::after .buttons-delete-check {
+.done-btn:hover::after .buttons-delete-check {
   background-color: var(--orange);
   color: white;
 }

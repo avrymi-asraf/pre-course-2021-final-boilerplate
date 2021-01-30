@@ -1,6 +1,8 @@
 //-----------------------------------------------------variables
 const urlLast = "https://api.jsonbin.io/v3/b/6012913588655a7f320e6d54/latest";
 const url = "https://api.jsonbin.io/v3/b/6012913588655a7f320e6d54";
+ const htmlButtons =
+   '<button class="delete-btn task-btn task-properties"><span class="tag"></span></button> <button class="done-btn task-btn task-properties"><span class="tag"></span></button>';
 //
 const inputNewTask = document.querySelector("#text-input");
 const viewTasksPage = document.querySelector(".view-tasks");
@@ -61,25 +63,42 @@ function elemTaskToList(todo) {
   createdAtDom.classList.add("todo-created-at", "task-properties");
   const todoNameDom = document.createElement("div");
   todoNameDom.classList.add("todo-text", "task-properties");
-  const deleteButtonDom = document.createElement("button");
-  deleteButtonDom.classList.add("delete-btn", "task-properties");
 
+
+  const buttonsDom = document.createElement("div");
+  buttonsDom.classList.add("buttons-delete-check");
+  const deleteButtonDom = document.createElement("button");
+  deleteButtonDom.classList.add("delete-btn", "task-btn", "task-properties");
+  const doneButtonDom = document.createElement("button");
+  doneButtonDom.classList.add("done-btn", "task-btn", "task-properties");
+  const deleteTag = document.createElement("span");
+  deleteTag.classList.add("tag");
+  const doneTag = document.createElement("span");
+  doneTag.classList.add("tag");
+  deleteButtonDom.appendChild(deleteTag);
+  doneButtonDom.appendChild(doneTag);
+buttonsDom.appendChild(deleteButtonDom)
+buttonsDom.appendChild(doneButtonDom)
+  
   containerDom.appendChild(todoNameDom);
   containerDom.appendChild(createdAtDom);
   containerDom.appendChild(priorityDom);
-  containerDom.appendChild(deleteButtonDom);
+  containerDom.appendChild(buttonsDom);
+  
   //fil data
   priorityDom.textContent = todo.priority;
   createdAtDom.textContent = todo.date;
   todoNameDom.textContent = todo.text;
-  deleteButtonDom.textContent = "Delete"
+if(deleteButtonDom){
   deleteButtonDom.onclick = () => {
-    viewTasksPage.removeChild(containerDom);
+    // viewTasksPage.removeChild(containerDom);
     const viewRemoveIndex = listViewTasks.indexOf(containerDom);
     const elemRemoveIndex = listViewTasks.indexOf(containerDom);
     listViewTasks.splice(viewRemoveIndex, 1);
     elemTasks.splice(elemRemoveIndex, 1);
-    putJsonBin(elemTasks)
+    listTasksToPage();
+    putJsonBin(elemTasks);
+  }
   }
   listViewTasks.push(containerDom);
 }
@@ -163,7 +182,7 @@ async function getJsonBin(insert = true) {
 //
 function insertJsonBin(data) {
   elemTasks = [];
-  listViewTasks = []
+  listViewTasks = [];
   for (let task of data) {
     elemTaskToList(task);
     elemTasks.push(task);
