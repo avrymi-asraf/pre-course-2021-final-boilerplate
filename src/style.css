@@ -111,7 +111,7 @@ section {
   width: auto;
   height: 50px;
   margin: 1.5vh 0;
-  padding: 1.5vh;
+  padding: 1vh;
   border-radius: 5px;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -126,6 +126,12 @@ section {
   overflow: visible;
   align-self: start;
   text-align: start;
+}
+
+.task-done::after{
+  color: rgb(131, 231, 1);
+  content:"✔";
+  font-size: 1rem;
 }
 
 .todo-created-at {
@@ -149,9 +155,13 @@ section {
   width: 100%;
   display: flex;
   flex-direction: row;
+
   /* border: 2px solid gray; */
   border-radius: 5px;
   font-size: 12px;
+}
+.todo-container:nth-of-type(even) .task-btn {
+  background-color: var(--blue--);
 }
 .task-btn {
   flex-grow: 1;
@@ -163,6 +173,7 @@ section {
   padding: 0;
   background:white;
   color: var(--blue);
+  font-size: 20px;
 }
 
 .delete-btn .tag::after {
