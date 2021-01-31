@@ -79,9 +79,10 @@ section {
   outline: 0;
   appearance: none;
   height: 4vh;
-  align-self: end;
+  align-self:flex-end;
   padding: 0;
   color: var(--blue);
+  font-family: "Cabin", sans-serif;
 }
 
 .flex-effect:hover,
@@ -111,7 +112,7 @@ section {
   width: auto;
   height: 50px;
   margin: 1.5vh 0;
-  padding: 1vh;
+  padding: 0.8vh;
   border-radius: 5px;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-rows: 1fr 1fr;

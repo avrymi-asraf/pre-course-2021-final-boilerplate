@@ -79,19 +79,23 @@ function elemTaskToList(todo) {
   priorityDom.textContent = todo.priority;
   createdAtDom.textContent = todo.date;
   todoNameDom.textContent = todo.text;
+  // console.log(todo.tags.includes("done"));
+  if (todo.tags.includes("done")) {
+    todoNameDom.classList.add("task-done");
+  }
   if (deleteButtonDom) {
     deleteButtonDom.onclick = () => {
-      // viewTasksPage.removeChild(containerDom);
-      const elemRemoveIndex = listViewTasks.indexOf(containerDom);
+      const elemRemoveIndex = elemTasks.indexOf(containerDom);
       elemTasks.splice(elemRemoveIndex, 1);
       resetFromElemTasks();
     };
   }
   if (doneButtonDom) {
     doneButtonDom.onclick = () => {
-      // viewTasksPage.removeChild(containerDom);
-      todoNameDom.classList.toggle("task-done");
-      console.log(elemTasks[todo]);
+      const elemIndex = listViewTasks.indexOf(containerDom);
+      const tagsOfElem = elemTasks[elemIndex].tags;
+      toggleOnList(tagsOfElem, 'done')
+      resetFromElemTasks();
     };
   }
   listViewTasks.push(containerDom);
@@ -188,6 +192,17 @@ async function getJsonBin(insert = true) {
       elemTasks.push(task);
       listTasksToPage();
     }
+  }
+}
+//
+//
+function toggleOnList(list, value) {
+  const index = list.indexOf(value);
+
+  if (index===-1) {
+    list.push(value);
+  } else {
+    list.splice(index, 1);
   }
 }
 //
