@@ -90,6 +90,7 @@ buttonsDom.appendChild(doneButtonDom)
   createdAtDom.textContent = todo.date;
   todoNameDom.textContent = todo.text;
 <<<<<<< HEAD
+<<<<<<< HEAD
   // console.log(todo.tags.includes("done"));
   if (todo.tags.includes("done")) {
     todoNameDom.classList.add("task-done");
@@ -121,6 +122,19 @@ if(deleteButtonDom){
   }
 >>>>>>> parent of 20d9051... finish done button
   }
+=======
+if(deleteButtonDom){
+  deleteButtonDom.onclick = () => {
+    // viewTasksPage.removeChild(containerDom);
+    const viewRemoveIndex = listViewTasks.indexOf(containerDom);
+    const elemRemoveIndex = listViewTasks.indexOf(containerDom);
+    listViewTasks.splice(viewRemoveIndex, 1);
+    elemTasks.splice(elemRemoveIndex, 1);
+    listTasksToPage();
+    putJsonBin(elemTasks);
+  }
+  }
+>>>>>>> parent of 20d9051... finish done button
   listViewTasks.push(containerDom);
 }
 //
@@ -208,6 +222,7 @@ function insertJsonBin(data) {
     elemTaskToList(task);
     elemTasks.push(task);
     listTasksToPage();
+<<<<<<< HEAD
   }
 }
 //
@@ -219,6 +234,8 @@ function toggleOnList(list, value) {
     list.push(value);
   } else {
     list.splice(index, 1);
+=======
+>>>>>>> parent of 20d9051... finish done button
   }
 }
 //
