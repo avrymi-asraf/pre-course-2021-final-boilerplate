@@ -1,14 +1,14 @@
 //-----------------------------------------------------variables
 const urlLast = "https://api.jsonbin.io/v3/b/6012913588655a7f320e6d54/latest";
 const url = "https://api.jsonbin.io/v3/b/6012913588655a7f320e6d54";
-const htmlButtons =
-  '<button class="delete-btn task-btn task-properties"><span class="tag"></span></button> <button class="done-btn task-btn task-properties"><span class="tag"></span></button>';
 //
 const inputNewTask = document.querySelector("#text-input");
 const viewTasksPage = document.querySelector(".view-tasks");
 const addButton = document.querySelector("#add-button");
 const sortButton = document.querySelector("#sort-button");
 const prioritySelector = document.querySelector("#priority-selector");
+const containerTags = document.querySelector("#container-tags");
+// containerTags.addEventListener("click" addTags);
 //
 addButton.addEventListener("click", inputTaskToElem);
 sortButton.addEventListener("click", sortTasks);
@@ -79,22 +79,28 @@ function elemTaskToList(todo) {
   priorityDom.textContent = todo.priority;
   createdAtDom.textContent = todo.date;
   todoNameDom.textContent = todo.text;
-  // console.log(todo.tags.includes("done"));
-  if (todo.tags.includes("done")) {
-    todoNameDom.classList.add("task-done");
+  
+  if (todo.tags) {
+    if (todo.tags.includes("done")) {
+      todoNameDom.classList.add("task-done");
+    }
   }
+  
   if (deleteButtonDom) {
     deleteButtonDom.onclick = () => {
-      const elemRemoveIndex = elemTasks.indexOf(containerDom);
+      const elemRemoveIndex = elemTasks.indexOf(todo);
+      console.log(elemRemoveIndex,elemTasks[elemRemoveIndex] )
       elemTasks.splice(elemRemoveIndex, 1);
       resetFromElemTasks();
     };
   }
+  
   if (doneButtonDom) {
     doneButtonDom.onclick = () => {
-      const elemIndex = listViewTasks.indexOf(containerDom);
+      const elemIndex = elemTasks.indexOf(todo);
       const tagsOfElem = elemTasks[elemIndex].tags;
-      // toggleOnList(tagsOfElem, 'done')
+      console.log(elemIndex, elemTasks[elemIndex]);
+      toggleOnList(tagsOfElem, 'done')
       resetFromElemTasks();
     };
   }
@@ -207,6 +213,17 @@ function toggleOnList(list, value) {
     list.splice(index, 1);
   }
 }
+//
+//
+// function addTags(event) {
+//   const idTag = event.target.id;
+//   switch (idTag) {
+//     case 'Sing':"Sing">
+// "Dance"
+// 'Sport'
+// "Write"
+//   }
+// }
 //
 //
 window.onload = getJsonBin();
