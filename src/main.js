@@ -1,8 +1,8 @@
 //-----------------------------------------------------variables
 const urlLast = "https://api.jsonbin.io/v3/b/6012913588655a7f320e6d54/latest";
 const url = "https://api.jsonbin.io/v3/b/6012913588655a7f320e6d54";
-const htmlButtons =
-  '<button class="delete-btn task-btn task-properties"><span class="tag"></span></button> <button class="done-btn task-btn task-properties"><span class="tag"></span></button>';
+ const htmlButtons =
+   '<button class="delete-btn task-btn task-properties"><span class="tag"></span></button> <button class="done-btn task-btn task-properties"><span class="tag"></span></button>';
 //
 const inputNewTask = document.querySelector("#text-input");
 const viewTasksPage = document.querySelector(".view-tasks");
@@ -43,6 +43,15 @@ function inputTaskToElem() {
 }
 //
 //
+async function putJsonBin(data) {
+  await fetch(url, {
+    method: "put",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ "my-todo": data }),
+  });
+}
+//
+//
 function elemTaskToList(todo) {
   //creat container to display task
   //and push to list of tasks
@@ -54,6 +63,7 @@ function elemTaskToList(todo) {
   createdAtDom.classList.add("todo-created-at", "task-properties");
   const todoNameDom = document.createElement("div");
   todoNameDom.classList.add("todo-text", "task-properties");
+
 
   const buttonsDom = document.createElement("div");
   buttonsDom.classList.add("buttons-delete-check");
@@ -67,18 +77,19 @@ function elemTaskToList(todo) {
   doneTag.classList.add("tag");
   deleteButtonDom.appendChild(deleteTag);
   doneButtonDom.appendChild(doneTag);
-  buttonsDom.appendChild(deleteButtonDom);
-  buttonsDom.appendChild(doneButtonDom);
-
+buttonsDom.appendChild(deleteButtonDom)
+buttonsDom.appendChild(doneButtonDom)
+  
   containerDom.appendChild(todoNameDom);
   containerDom.appendChild(createdAtDom);
   containerDom.appendChild(priorityDom);
   containerDom.appendChild(buttonsDom);
-
+  
   //fil data
   priorityDom.textContent = todo.priority;
   createdAtDom.textContent = todo.date;
   todoNameDom.textContent = todo.text;
+<<<<<<< HEAD
   // console.log(todo.tags.includes("done"));
   if (todo.tags.includes("done")) {
     todoNameDom.classList.add("task-done");
@@ -97,27 +108,20 @@ function elemTaskToList(todo) {
       toggleOnList(tagsOfElem, 'done')
       resetFromElemTasks();
     };
+=======
+if(deleteButtonDom){
+  deleteButtonDom.onclick = () => {
+    // viewTasksPage.removeChild(containerDom);
+    const viewRemoveIndex = listViewTasks.indexOf(containerDom);
+    const elemRemoveIndex = listViewTasks.indexOf(containerDom);
+    listViewTasks.splice(viewRemoveIndex, 1);
+    elemTasks.splice(elemRemoveIndex, 1);
+    listTasksToPage();
+    putJsonBin(elemTasks);
+  }
+>>>>>>> parent of 20d9051... finish done button
   }
   listViewTasks.push(containerDom);
-}
-//
-//
-function resetFromElemTasks() {
-  listViewTasks = [];
-  for (let task of elemTasks) {
-   elemTaskToList(task)
-  }
-  listTasksToPage();
-  putJsonBin(elemTasks);
-}
-//
-//
-async function putJsonBin(data) {
-  await fetch(url, {
-    method: "put",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ "my-todo": data }),
-  });
 }
 //
 //
@@ -180,18 +184,30 @@ function sortTasks(key = "priority", reverse = false) {
 }
 //
 //
+function elemTasksToJson() {
+  let a = JSON.stringify(elemTasks, function replacer(date, value) {
+    if (date === "date") {
+      return value.replace("-", "").Number();
+    }
+  });
+}
+//
+//
 async function getJsonBin(insert = true) {
   let response = await fetch(urlLast, { method: "GET" });
   let JsonData = await response.json();
   let clainData = await JsonData.record["my-todo"];
-  if (insert){
-    elemTasks = [];
-    listViewTasks = [];
-    for (let task of clainData) {
-      elemTaskToList(task);
-      elemTasks.push(task);
-      listTasksToPage();
-    }
+  if (insert) insertJsonBin(await clainData);
+}
+//
+//
+function insertJsonBin(data) {
+  elemTasks = [];
+  listViewTasks = [];
+  for (let task of data) {
+    elemTaskToList(task);
+    elemTasks.push(task);
+    listTasksToPage();
   }
 }
 //
