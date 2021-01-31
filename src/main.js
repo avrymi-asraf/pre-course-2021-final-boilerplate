@@ -94,7 +94,7 @@ function elemTaskToList(todo) {
     doneButtonDom.onclick = () => {
       const elemIndex = listViewTasks.indexOf(containerDom);
       const tagsOfElem = elemTasks[elemIndex].tags;
-      toggleOnList(tagsOfElem, 'done')
+      // toggleOnList(tagsOfElem, 'done')
       resetFromElemTasks();
     };
   }
@@ -192,6 +192,8 @@ async function getJsonBin(insert = true) {
       elemTasks.push(task);
       listTasksToPage();
     }
+  } else {
+    console.log(clainData, JsonData)
   }
 }
 //
