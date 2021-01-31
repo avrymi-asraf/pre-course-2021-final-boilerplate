@@ -91,6 +91,7 @@ buttonsDom.appendChild(doneButtonDom)
   todoNameDom.textContent = todo.text;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   // console.log(todo.tags.includes("done"));
   if (todo.tags.includes("done")) {
     todoNameDom.classList.add("task-done");
@@ -122,6 +123,19 @@ if(deleteButtonDom){
   }
 >>>>>>> parent of 20d9051... finish done button
   }
+=======
+if(deleteButtonDom){
+  deleteButtonDom.onclick = () => {
+    // viewTasksPage.removeChild(containerDom);
+    const viewRemoveIndex = listViewTasks.indexOf(containerDom);
+    const elemRemoveIndex = listViewTasks.indexOf(containerDom);
+    listViewTasks.splice(viewRemoveIndex, 1);
+    elemTasks.splice(elemRemoveIndex, 1);
+    listTasksToPage();
+    putJsonBin(elemTasks);
+  }
+  }
+>>>>>>> parent of 20d9051... finish done button
 =======
 if(deleteButtonDom){
   deleteButtonDom.onclick = () => {
@@ -223,6 +237,7 @@ function insertJsonBin(data) {
     elemTasks.push(task);
     listTasksToPage();
 <<<<<<< HEAD
+<<<<<<< HEAD
   }
 }
 //
@@ -234,6 +249,8 @@ function toggleOnList(list, value) {
     list.push(value);
   } else {
     list.splice(index, 1);
+=======
+>>>>>>> parent of 20d9051... finish done button
 =======
 >>>>>>> parent of 20d9051... finish done button
   }
