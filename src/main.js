@@ -8,13 +8,15 @@ const addButton = document.querySelector("#add-button");
 const sortButton = document.querySelector("#sort-button");
 const prioritySelector = document.querySelector("#priority-selector");
 const containerTags = document.querySelector("#container-tags");
-// containerTags.addEventListener("click" addTags);
+containerTags.addEventListener("click", addTags);
+
 //
 addButton.addEventListener("click", inputTaskToElem);
 sortButton.addEventListener("click", sortTasks);
 //
 let listViewTasks = [];
 let elemTasks = [];
+let tagsArray = [];
 //
 //--------------------------------------function
 //
@@ -33,13 +35,14 @@ function inputTaskToElem() {
   const priority = prioritySelector.value;
   const createdAt = dateNowSql(); //creat date in SQL format
   //
-  const taskFromInput = new todo(taskName, priority, createdAt);
+  const taskFromInput = new todo(taskName, priority, createdAt,tagsArray);
   elemTaskToList(taskFromInput);
   elemTasks.push(taskFromInput);
   inputNewTask.value = "";
   // prioritySelector.value = "1";
   listTasksToPage();
   putJsonBin(elemTasks);
+  console.log(elemTasks)
 }
 //
 //
@@ -89,7 +92,6 @@ function elemTaskToList(todo) {
   if (deleteButtonDom) {
     deleteButtonDom.onclick = () => {
       const elemRemoveIndex = elemTasks.indexOf(todo);
-      console.log(elemRemoveIndex,elemTasks[elemRemoveIndex] )
       elemTasks.splice(elemRemoveIndex, 1);
       resetFromElemTasks();
     };
@@ -99,7 +101,6 @@ function elemTaskToList(todo) {
     doneButtonDom.onclick = () => {
       const elemIndex = elemTasks.indexOf(todo);
       const tagsOfElem = elemTasks[elemIndex].tags;
-      console.log(elemIndex, elemTasks[elemIndex]);
       toggleOnList(tagsOfElem, 'done')
       resetFromElemTasks();
     };
@@ -214,16 +215,12 @@ function toggleOnList(list, value) {
   }
 }
 //
-//
-// function addTags(event) {
-//   const idTag = event.target.id;
-//   switch (idTag) {
-//     case 'Sing':"Sing">
-// "Dance"
-// 'Sport'
-// "Write"
-//   }
-// }
-//
+
+function addTags(event) {
+  const idTag = event.target.id;
+  event.target.classList.toggle('tag-choice');
+  toggleOnList(tagsArray, idTag);
+}
+
 //
 window.onload = getJsonBin();
