@@ -13,13 +13,9 @@ const pageTitle = document.querySelector("title");
 //
 //
 addButton.addEventListener("click", inputTaskToElem);
-sortButton.addEventListener("click", sortTasks);
+sortButton.addEventListener("click", sortTasksForTest);
 document.addEventListener("keydown", inputByCtrlEnter);
-function inputByCtrlEnter (event) {
-  if (event.ctrlKey && event.keyCode === 13) {
-    inputTaskToElem();
-  }
-};
+//
 //
 let listViewTasks = [];
 let elemTasks = [];
@@ -195,25 +191,24 @@ function sortTasks(key = "priority", reverse = false) {
   let isMixed = true;
   while (isMixed) {
     isMixed = false;
-    for (let index = 0; index < listViewTasks.length - 1; index++) {
-      let content_a = listViewTasks[index].childNodes[childIndex].textContent;
-      let content_b =
-        listViewTasks[index + 1].childNodes[childIndex].textContent;
+    for (let index = 0; index < elemTasks.length - 1; index++) {
+      let content_a = elemTasks[index].priority;
+      let content_b = elemTasks[index+1].priority;
       //if content is number, convert to number
       if (Number(content_a) && Number(content_b)) {
         [content_a, content_b] = [Number(content_a), Number(content_b)];
       }
       //if is mixed
       if (reverse !== content_a < content_b) {
-        [listViewTasks[index], listViewTasks[index + 1]] = [
-          listViewTasks[index + 1],
-          listViewTasks[index],
+        [elemTasks[index], elemTasks[index + 1]] = [
+          elemTasks[index + 1],
+          elemTasks[index],
         ];
         isMixed = true;
       }
     }
   }
-  listTasksToPage();
+  resetFromElemTasks();
 }
 //
 //
@@ -254,4 +249,48 @@ function addTags(event) {
   }
 }
 //
-window.onload = getJsonBin();
+//
+function sortTasksForTest(key = "priority", reverse = false) {
+  console.log("sort by function");
+  //determine sort by?
+  let childIndex = 2;
+
+  switch (key) {
+    case "priority":
+      childIndex = 2;
+      break;
+  }
+
+  let isMixed = true;
+  while (isMixed) {
+    isMixed = false;
+    for (let index = 0; index < listViewTasks.length - 1; index++) {
+      let content_a = listViewTasks[index].childNodes[childIndex].textContent;
+      let content_b =
+        listViewTasks[index + 1].childNodes[childIndex].textContent;
+      //if content is number, convert to number
+      if (Number(content_a) && Number(content_b)) {
+        [content_a, content_b] = [Number(content_a), Number(content_b)];
+      }
+      //if is mixed
+      if (reverse !== content_a < content_b) {
+        [listViewTasks[index], listViewTasks[index + 1]] = [
+          listViewTasks[index + 1],
+          listViewTasks[index],
+        ];
+        isMixed = true;
+      }
+    }
+  }
+  listTasksToPage();
+}
+//
+// 
+function inputByCtrlEnter (event) {
+  if (event.ctrlKey && event.keyCode === 13) {
+    inputTaskToElem();
+  }
+};
+//
+//
+getJsonBin();

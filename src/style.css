@@ -49,10 +49,13 @@ section {
     width: 80vw;
   }
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 600px) {
   .control-field,
   .view-field {
     width: 90vw;
+  }
+  .control-field{
+    height: 170px;
   }
 }
 .legend {
@@ -117,6 +120,7 @@ section {
   justify-items: space-around;
   align-items: center;
   width:100%;
+  flex-flow: row wrap;
 }
 
 .tags{
@@ -137,7 +141,16 @@ opacity: 1;
 .tag-choice{
   opacity: 1;
 }
-
+@media only screen and (max-width: 800px) {
+  .tags{
+height: 40px;
+font-size:20px;
+  }
+  
+}
+@media only screen and (max-width: 400px) {
+  
+}
 /* ------------------------------------------------------------------------------------------------------------------ veiw tasks*/
 
 .todo-container {
@@ -255,9 +268,17 @@ opacity: 1;
 }
 
 @media only screen and (max-width: 800px) {
-  
+  .control-field,
+  .view-field {
+    width: 80vw;
+  }
 }
-
+@media only screen and (max-width: 400px) {
+  .control-field,
+  .view-field {
+    width: 90vw;
+  }
+}
 
 /* -------------------------------------------------------------------------------------------------tag container */
 
