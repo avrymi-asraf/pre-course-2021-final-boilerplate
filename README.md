@@ -8,7 +8,7 @@ The inspired of buttons I take from here [buttons](https://codepen.io/hexagoncir
 
 > add task, and can add tags, all data including tags save on JSON.bin
 
-![image info](./readme-imag\todo-add-task.gif)
+![image info](./readme-imag/todo-add-task.gif)
 
 
 ## sort delete and Mark/Unmark todo as done
