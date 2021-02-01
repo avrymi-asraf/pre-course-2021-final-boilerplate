@@ -250,3 +250,15 @@ section {
 @media only screen and (max-width: 800px) {
   
 }
+
+
+/* -------------------------------------------------------------------------------------------------tag container */
+
+.tag-container{
+  grid-row:2/3;
+  grid-column:2/3;
+}
+.tags-text-display{
+  font-size: 10px;
+  color:gray;
+}

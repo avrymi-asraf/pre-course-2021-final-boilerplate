@@ -35,14 +35,25 @@ function inputTaskToElem() {
   const priority = prioritySelector.value;
   const createdAt = dateNowSql(); //creat date in SQL format
   //
-  const taskFromInput = new todo(taskName, priority, createdAt,tagsArray);
+  const taskFromInput = new todo(taskName, priority, createdAt, tagsArray);
   elemTaskToList(taskFromInput);
   elemTasks.push(taskFromInput);
   inputNewTask.value = "";
-  // prioritySelector.value = "1";
+  prioritySelector.value = "";
   listTasksToPage();
   putJsonBin(elemTasks);
-  console.log(elemTasks)
+  console.log(elemTasks);
+  removeTagChoice();
+
+  function removeTagChoice() {
+    const domTagList = containerTags.childNodes;
+    for (let tag of domTagList) {
+      if (tag.nodeName === "BUTTON" && tag.classList.contains("tag-choice")) {
+        tag.classList.remove("tag-choice");
+      }
+    }
+    tagsArray = [];
+  }
 }
 //
 //
@@ -73,22 +84,34 @@ function elemTaskToList(todo) {
   buttonsDom.appendChild(deleteButtonDom);
   buttonsDom.appendChild(doneButtonDom);
 
+  const tagsContainer = document.createElement("div");
+  const tagsText = document.createElement("a");
+  tagsText.classList.add("tags-text-display");
+  tagsContainer.classList.add("tag-container");
+  tagsContainer.appendChild(tagsText);
+
   containerDom.appendChild(todoNameDom);
   containerDom.appendChild(createdAtDom);
   containerDom.appendChild(priorityDom);
   containerDom.appendChild(buttonsDom);
+  containerDom.appendChild(tagsContainer);
 
   //fil data
   priorityDom.textContent = todo.priority;
   createdAtDom.textContent = todo.date;
   todoNameDom.textContent = todo.text;
-  
+
   if (todo.tags) {
     if (todo.tags.includes("done")) {
       todoNameDom.classList.add("task-done");
     }
+    let text = "";
+    for (let tag of todo.tags) {
+      text += `${tag} `;
+    }
+    tagsText.textContent = text;
   }
-  
+
   if (deleteButtonDom) {
     deleteButtonDom.onclick = () => {
       const elemRemoveIndex = elemTasks.indexOf(todo);
@@ -96,12 +119,12 @@ function elemTaskToList(todo) {
       resetFromElemTasks();
     };
   }
-  
+
   if (doneButtonDom) {
     doneButtonDom.onclick = () => {
       const elemIndex = elemTasks.indexOf(todo);
       const tagsOfElem = elemTasks[elemIndex].tags;
-      toggleOnList(tagsOfElem, 'done')
+      toggleOnList(tagsOfElem, "done");
       resetFromElemTasks();
     };
   }
@@ -112,7 +135,7 @@ function elemTaskToList(todo) {
 function resetFromElemTasks() {
   listViewTasks = [];
   for (let task of elemTasks) {
-   elemTaskToList(task)
+    elemTaskToList(task);
   }
   listTasksToPage();
   putJsonBin(elemTasks);
@@ -191,7 +214,7 @@ async function getJsonBin(insert = true) {
   let response = await fetch(urlLast, { method: "GET" });
   let JsonData = await response.json();
   let clainData = await JsonData.record["my-todo"];
-  if (insert){
+  if (insert) {
     elemTasks = [];
     listViewTasks = [];
     for (let task of clainData) {
@@ -200,7 +223,7 @@ async function getJsonBin(insert = true) {
       listTasksToPage();
     }
   } else {
-    console.log(clainData, JsonData)
+    console.log(clainData, JsonData);
   }
 }
 //
@@ -208,7 +231,7 @@ async function getJsonBin(insert = true) {
 function toggleOnList(list, value) {
   const index = list.indexOf(value);
 
-  if (index===-1) {
+  if (index === -1) {
     list.push(value);
   } else {
     list.splice(index, 1);
@@ -217,9 +240,11 @@ function toggleOnList(list, value) {
 //
 
 function addTags(event) {
-  const idTag = event.target.id;
-  event.target.classList.toggle('tag-choice');
-  toggleOnList(tagsArray, idTag);
+  if (event.target.nodeName === "BUTTON") {
+    const idTag = event.target.id;
+    event.target.classList.toggle("tag-choice");
+    toggleOnList(tagsArray, idTag);
+  }
 }
 
 //
