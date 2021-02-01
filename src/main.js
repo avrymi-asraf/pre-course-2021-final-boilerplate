@@ -9,10 +9,17 @@ const sortButton = document.querySelector("#sort-button");
 const prioritySelector = document.querySelector("#priority-selector");
 const containerTags = document.querySelector("#container-tags");
 containerTags.addEventListener("click", addTags);
-
+const pageTitle = document.querySelector("title");
+//
 //
 addButton.addEventListener("click", inputTaskToElem);
 sortButton.addEventListener("click", sortTasks);
+document.addEventListener("keydown", inputByCtrlEnter);
+function inputByCtrlEnter (event) {
+  if (event.ctrlKey && event.keyCode === 13) {
+    inputTaskToElem();
+  }
+};
 //
 let listViewTasks = [];
 let elemTasks = [];
@@ -42,7 +49,6 @@ function inputTaskToElem() {
   prioritySelector.value = "";
   listTasksToPage();
   putJsonBin(elemTasks);
-  console.log(elemTasks);
   removeTagChoice();
 
   function removeTagChoice() {
@@ -159,6 +165,7 @@ function listTasksToPage() {
   //update counter
   const counter = document.querySelector("#counter");
   counter.textContent = listViewTasks.length;
+  pageTitle.textContent = `📋 ${listViewTasks.length} tasks`;
   // console.log(listViewTasks);
 }
 //
@@ -246,6 +253,5 @@ function addTags(event) {
     toggleOnList(tagsArray, idTag);
   }
 }
-
 //
 window.onload = getJsonBin();
