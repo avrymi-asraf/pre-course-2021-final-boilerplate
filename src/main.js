@@ -46,7 +46,7 @@ function inputTaskToElem() {
   elemTaskToList(taskFromInput);
   elemTasks.push(taskFromInput);
   inputNewTask.value = "";
-  prioritySelector.value = "";
+  prioritySelector.value = 1;
   listTasksToPage();
   putJsonBin(elemTasks);
   removeTagChoice();
