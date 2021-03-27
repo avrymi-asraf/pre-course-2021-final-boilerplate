@@ -155,7 +155,7 @@ window.onload = () => {
     });
   }
   //
-  //display the list of Dpm elements
+  //display the list of Dom elements
   function listTasksToPage() {
     viewTasksPage.innerHTML = "";
     for (let task of listViewTasks) {
@@ -258,6 +258,7 @@ window.onload = () => {
       inputTaskToElem();
     }
   }
+  //
   //
   //
   getJsonBin();
